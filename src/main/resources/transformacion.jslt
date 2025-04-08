@@ -35,7 +35,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
     "body": {
 
       "productId": "NOMINAS.CON.CONVENIO",
-      "masterArrangementId": {Root}.masterArrangementId,
+      "masterArrangementId": .body.masterArrangementId,
       "roleName": .body.roleName,
       "transactionAmount": .body.transactionAmount,
       "reason": .body.reason,
