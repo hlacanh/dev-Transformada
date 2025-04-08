@@ -35,7 +35,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
     "body": {
 
       "productId": "NOMINAS.CON.CONVENIO"
-      "masterArrangementId": {Root}.masterArrangementId
+      "masterArrangementId": {Root}.masterArrangementId,
       "roleName": .body.roleName,
       "transactionAmount": .body.transactionAmount,
       "reason": .body.reason,
@@ -49,15 +49,6 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
       "arrangementId":"NEW",
       "currencyId":"GTQ",
       "activityId":"LENDING-NEW-ARRANGEMENT",
-
-      "UUID": .body.UUID,
-      "Terminal": .body.Terminal,
-      "Channel": .body.Channel,
-      "User": .body.User,
-      "currencyId": .body.productId,
-      "activityId": .body.activityId,
-      "reason": .body.reason,
-      "customerIds": .body.customerIds,
   
       "properties": [
         {
