@@ -1,5 +1,7 @@
 
 let commitment={for (.body.COMMITMENT) string("llaves") : .}
+let account={for (.body.ACCOUNT) string("llaves") : .}
+let principalInt={for (.body.PRINCIPALINT) string("llaves") : .}
 
 let settlemento={for (.body.settlement) string("llaves") : .}
 let settlement0={for ($settlemento.llaves.settlement) string("llaves") : .}

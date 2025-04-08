@@ -31,8 +31,8 @@ spec:
                     "body":{
                     "customerIds":[
                       {
-                          "customerId":"100101",
-                          "customerRole":"owner"
+                          "customerId":"100103",
+                          "customerRole":"benefitial owner"
                       }
                     ],
                     "properties":[
@@ -47,13 +47,13 @@ spec:
                                   "No.Escritura":"1234",
                                   "NOTARIO":"13",
                                   "Cupo.Inter":"56",
-                                  "Grupo.Planillas":"746",
+                        "Grupo.Planillas":"746",
                                   "Gru.Caja.Ahorro":"5",
                                   "Origen.Fondos":"1",
                                   "Municip.Fondos":"100101",
-                                  "Ent.Q.Autorizo":"AG",
-                                  "Fech.Acta.Aprob":"20251031",
-                                  "EJE.APROBO":"20250101",
+                                  "Ent.Q.Autorizo":"STRING",
+                        "Fech.Acta.Aprob":"STRING",
+                                  "EJE.APROBO":"STRING",
                                   "Codigo.de.Banca":"STRING",
                                   "L.SEGMENTO":"STRING",
                                   "SUBSEGMENTO":"STRING",
@@ -94,7 +94,7 @@ spec:
                                   "PROYECTO":"STRING",
                                   "MATRI.FISCAL":"STRING",
                                   "TIPO.INVERSION":"STRING",
-                        "PAIS.AP.FONDOS":"STRING",
+                                  "PAIS.AP.FONDOS":"STRING",
                                   "ORIG.CED.HIPO":"STRING",
                                   "N.INST.REAL.OPE":"STRING",
                                   "N.INST.ADQ.CE.H":"STRING",
@@ -109,27 +109,34 @@ spec:
                                   "Reg.Propiedad":"STRING",
                                   "NUM.ACTA":"STRING"
                           }
-                    },
-                          {
-                            "STATEMENT":{
-                                "IF.NO.MOVEMENT":"STRING", 
-                        "STMT.FQU.1:1":"STRING"
-                            }
-                          },
-                          {
+                        },
+                        {
+                        "COMMITMENT":{
+                              "AMOUNT":"60000",
+                              "TERM":"5Y"
+                        }  
+                        },
+
+                        {
                             "PRINCIPALINT":{
-                                "FIXED.RATE:1":"100",
-                        "DAY.BASIS":"1,
-                        "ACCRUAL.RULE":"YES"
+                                "FIXED.RATE:1":"19"
                             }
                           },
+
                           {
                             "PENALTYINT":{
-                                "FIXED.RATE:1":"STRING",
-                        "DAY.BASIS":"STRING",
-                        "ACCRUAL.RULE":"STRING"
+                                "FIXED.RATE:1":"12"
                             }
                           },
+
+                          {
+                            "STATEMENT":{
+                                "IF.NO.MOVEMENT":"NO", 
+                                "STMT.FQU.1:1":"SI"
+                            }
+                          },
+                        
+                        
                           {
                             "SETTLEMENT":{
                                 "PAYIN.SETTLEMENT:1":"STRING",
@@ -244,15 +251,8 @@ spec:
                                   "START.DATE:3:1":"STRING",
                                   "BILL.TYPE:3":"STRING"
                         }
-                          },
-                          {
-                            "COMMITMENT":{
-                                  "AMOUNT":"STRING",
-                                  "TERM":"STRING",
-                                  "REVOLVING":"STRING",
-                        "MATURITY.DATE":"STRING"
-                      }  
-                    }
+                          }
+                          
                     ],
                     "productId":"NOMINAS.CON.CONVENIO",
                     "masterArrangementId":"",
@@ -263,14 +263,13 @@ spec:
                     "branch":"",
                     "lineOfBusiness":"",
                     "UUID":"123",
-                    "Terminal":"TERMINAL2",
+                    "Terminal":"TERMINAL1",
                     "Channel":"1",
-                    "User":"HLACAN2",
+                    "User":"HLACAN1",
                     "arrangementId":"NEW",
                     "currencyId":"GTQ",
                     "activityId":"LENDING-NEW-ARRANGEMENT"
-                  }
-                  }
+                  } }
           - marshal:
               json: {}
           - to:
