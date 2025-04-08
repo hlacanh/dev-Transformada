@@ -48,27 +48,27 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
                         
             {
               "fieldName": "L.TI.GARAN",
-              "fieldValue": .body.properties[0].COMMITMENT."L.TI.GARAN"
+              "fieldValue": .body.properties[0].ACCOUNT."L.TI.GARAN"
             },
             {
               "fieldName": "L.DET.GARANTIA",
-              "fieldValue": .body.properties[0].COMMITMENT."L.DET.GARANTIA"
+              "fieldValue": .body.properties[0].ACCOUNT."L.DET.GARANTIA"
             },
             {
               "fieldName": "CASO.CREATIO",
-              "fieldValue": .body.properties[0].COMMITMENT."CASO.CREATIO"
+              "fieldValue": .body.properties[0].ACCOUNT."CASO.CREATIO"
             },
             {
               "fieldName": "N.RESOLUCION",
-              "fieldValue": .body.properties[0].COMMITMENT."N.RESOLUCION"
+              "fieldValue": .body.properties[0].ACCOUNT."N.RESOLUCION"
             },
             {
               "fieldName": "Fecha.Form",
-              "fieldValue": .body.properties[0].COMMITMENT."Fecha.Form"
+              "fieldValue": .body.properties[0].ACCOUNT."Fecha.Form"
             },
             {
               "fieldName": "Tipo.Docto.Form",
-              "fieldValue": .body.properties[0].COMMITMENT."Tipo.Docto.Form"
+              "fieldValue": .body.properties[0].ACCOUNT."Tipo.Docto.Form"
             }
           ]
         },
@@ -79,18 +79,34 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
                         
             {
               "fieldName": "AMOUNT",
-              "fieldValue": .body.properties[12].COMMITMENT."AMOUNT"
+              "fieldValue": .body.properties[1].COMMITMENT."AMOUNT"
             },
             {
               "fieldName": "TERM",
-              "fieldValue": .body.properties[12].COMMITMENT."TERM"
-            },
-            {
-              "fieldName": "REVOLVING",
-              "fieldValue": .body.properties[12].COMMITMENT."REVOLVING"
+              "fieldValue": .body.properties[1].COMMITMENT."TERM"
             }
           ]
         },
+
+        {
+          "propertyId": "PRINCIPALINT",
+          "fields": [
+            {
+              "fieldName": "FIXED.RATE:1",
+              "fieldValue": .body.properties[2].PRINCIPALINT."FIXED.RATE:1"
+            }
+          ]
+        },
+        {
+          "propertyId": "PENALTYINT",
+          "fields": [
+            {
+              "fieldName": "FIXED.RATE:1",
+              "fieldValue": .body.properties[3].PENALTYINT."FIXED.RATE:1"
+            }
+          ]
+        },
+
         {
           "propertyId": "SETTLEMENT",
           "fields": [
@@ -108,24 +124,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
             }
           ]
         },
-        {
-          "propertyId": "PRINCIPALINT",
-          "fields": [
-            {
-              "fieldName": "FIXED.RATE:1",
-              "fieldValue": if ($principalin1.llaves."FIXED.RATE:1" != null) $principalino.llaves.interest[0]."FIXED.RATE:1" else "0"
-            }
-          ]
-        },
-        {
-          "propertyId": "PENALTYINT",
-          "fields": [
-            {
-              "fieldName": "FIXED.RATE:1",
-              "fieldValue": if ($penaltyin1.llaves."FIXED.RATE:1"!= null) $penaltyin1.llaves."FIXED.RATE:1" else "0"
-            }
-          ]
-        },
+
         {
           "propertyId": "GASTFORMALIZA",
           "fields": [

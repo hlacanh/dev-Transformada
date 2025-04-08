@@ -80,27 +80,34 @@
                   "Reg.Propiedad":"STRING",
                   "NUM.ACTA":"STRING"
           }
-    },
+        },
+        {
+        "COMMITMENT":{
+              "AMOUNT":"60000",
+              "TERM":"5Y"
+        }  
+        },
+
+        {
+            "PRINCIPALINT":{
+                "FIXED.RATE:1":"19"
+            }
+          },
+
+          {
+            "PENALTYINT":{
+                "FIXED.RATE:1":"12"
+            }
+          },
+
           {
             "STATEMENT":{
                 "IF.NO.MOVEMENT":"NO", 
                 "STMT.FQU.1:1":"SI"
             }
           },
-          {
-            "PRINCIPALINT":{
-                "FIXED.RATE:1":"200",
-        "DAY.BASIS":"2",
-        "ACCRUAL.RULE":"NO"
-            }
-          },
-          {
-            "PENALTYINT":{
-                "FIXED.RATE:1":"STRING",
-        "DAY.BASIS":"STRING",
-        "ACCRUAL.RULE":"STRING"
-            }
-          },
+        
+        
           {
             "SETTLEMENT":{
                 "PAYIN.SETTLEMENT:1":"STRING",
@@ -215,15 +222,8 @@
                   "START.DATE:3:1":"STRING",
                   "BILL.TYPE:3":"STRING"
         }
-          },
-          {
-            "COMMITMENT":{
-                  "AMOUNT":"STRING",
-                  "TERM":"STRING",
-                  "REVOLVING":"STRING",
-        "MATURITY.DATE":"STRING"
-      }  
-    }
+          }
+          
     ],
     "productId":"NOMINAS.CON.CONVENIO",
     "masterArrangementId":"",
