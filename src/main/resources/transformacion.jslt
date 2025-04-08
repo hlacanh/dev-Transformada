@@ -34,12 +34,12 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
 {
     "body": {
 
-      "UUID": .root.UUID,
+      "UUID": .body.UUID,
       "Terminal": .body.Terminal,
       "Channel": .body.Channel,
       "User": .body.User,
       "productId": .body.productId,
-      "currencyId": .body.currency,
+      "currencyId": .body.productId,
       "activityId": .body.activityId,
       "reason": .body.reason,
       "customerIds": .body.customerIds,
@@ -52,19 +52,19 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
                         
             {
               "fieldName": "L.TI.GARAN",
-              "fieldValue": .body.UUID
+              "fieldValue": if (.body.properties[0].ACCOUNT."L.TI.GARAN" != null) .body.properties[0].ACCOUNT."L.TI.GARAN" else "10"
             },
             {
               "fieldName": "L.DET.GARANTIA",
-              "fieldValue": .body.properties[0].ACCOUNT."L.TI.GARAN"
+              "fieldValue": .body.properties[0].ACCOUNT."L.DET.GARANTIA"
             },
             {
               "fieldName": "CASO.CREATIO",
-              "fieldValue": "25"
+              "fieldValue": .body.properties[0].ACCOUNT."CASO.CREATIO"
             },
             {
               "fieldName": "N.RESOLUCION",
-              "fieldValue": .body.properties[1].ACCOUNT."L.TI.GARAN"
+              "fieldValue": .body.properties[0].ACCOUNT."N.RESOLUCION"
             },
             {
               "fieldName": "Fecha.Form",
@@ -72,7 +72,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
             },
             {
               "fieldName": "Tipo.Docto.Form",
-              "fieldValue": "AG"
+              "fieldValue": .body.properties[0].ACCOUNT."Tipo.Docto.Form"
             }
           ]
         },
@@ -83,7 +83,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
                         
             {
               "fieldName": "AMOUNT",
-              "fieldValue": .body.properties[1].ACCOUNT."L.TI.GARAN"
+              "fieldValue": .body.properties[1].COMMITMENT."AMOUNT"
             },
             {
               "fieldName": "TERM",
