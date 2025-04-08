@@ -42,6 +42,37 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
   
       "properties": [
         {
+          "propertyId": "ACCOUNT",
+          "fields":
+           [
+                        
+            {
+              "fieldName": "L.TI.GARAN",
+              "fieldValue": .body.properties[0].COMMITMENT."L.TI.GARAN"
+            },
+            {
+              "fieldName": "L.DET.GARANTIA",
+              "fieldValue": .body.properties[0].COMMITMENT."L.DET.GARANTIA"
+            },
+            {
+              "fieldName": "CASO.CREATIO",
+              "fieldValue": .body.properties[0].COMMITMENT."CASO.CREATIO"
+            },
+            {
+              "fieldName": "N.RESOLUCION",
+              "fieldValue": .body.properties[0].COMMITMENT."N.RESOLUCION"
+            },
+            {
+              "fieldName": "Fecha.Form",
+              "fieldValue": .body.properties[0].COMMITMENT."Fecha.Form"
+            },
+            {
+              "fieldName": "Tipo.Docto.Form",
+              "fieldValue": .body.properties[0].COMMITMENT."Tipo.Docto.Form"
+            }
+          ]
+        },
+        {
           "propertyId": "COMMITMENT",
           "fields":
            [
