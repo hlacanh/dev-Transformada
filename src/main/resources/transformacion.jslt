@@ -50,7 +50,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
                         
             {
               "fieldName": "L.TI.GARAN",
-              "fieldValue": .body.properties[0].ACCOUNT."L.TI.GARAN"
+              "fieldValue": .body.properties[0].fields[0].value
             },
             {
               "fieldName": "L.DET.GARANTIA",
