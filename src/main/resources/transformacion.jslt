@@ -31,9 +31,6 @@ let penaltyin1={for ($penaltyino.llaves."interest") string("llaves") : .}
 
 let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
 
-let penaltyIno={for (.body.PENALTYINO) string}
-let penaltyIn1={for ($penaltyIno.llaves."interest") string}
-let gastroformalizO={for (.body.GASTFORMALIZA) string}
 {
     "body": {
 
