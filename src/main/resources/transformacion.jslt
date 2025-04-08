@@ -31,6 +31,9 @@ let penaltyin1={for ($penaltyino.llaves."interest") string("llaves") : .}
 
 let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
 
+let penaltyIno={for (.body.PENALTYINO) string}
+let penaltyIn1={for ($penaltyIno.llaves."interest") string}
+let gastroformalizO={for (.body.GASTFORMALIZA) string}
 {
     "body": {
 
@@ -42,7 +45,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
       "simulationRunReference": .body.simulationRunReference,
       "branch": .body.branch,
       "lineOfBusiness": .body.lineOfBusiness,
-      "UUID":.body.UUID,
+      "UUID": .body.UUID,
       "Terminal": .body.Terminal,
       "Channel": .body.Channel,
       "User": .body.User,
@@ -62,7 +65,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
             },
             {
               "fieldName": "L.DET.GARANTIA",
-              "fieldValue": .body.properties[0].ACCOUNT."L.DET.GARANTIA"
+              "fieldValue": if (.body.properties[0].fields[1].fieldValue) .body.properties[0].fields[1].fieldValue else "999"
             },
             {
               "fieldName": "CASO.CREATIO",

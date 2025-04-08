@@ -1,11 +1,29 @@
 {
     "body":{
+        
+    "productId":"NOMINAS.CON.CONVENIO",
+    "masterArrangementId":"",
+    "roleName":"",
+    "transactionAmount":"0",
+    "reason":"",
+    "simulationRunReference":"",
+    "branch":"",
+    "lineOfBusiness":"",
+    "UUID":"123",
+    "Terminal":"TERMINAL1",
+    "Channel":"1",
+    "User":"HLACAN1",
+    "arrangementId":"NEW",
+    "currencyId":"GTQ",
+    "activityId":"LENDING-NEW-ARRANGEMENT",
+
     "customerIds":[
       {
           "customerId":"100103",
           "customerRole":"benefitial owner"
       }
     ],
+    
     "properties":[
         {
             "ACCOUNT":{
@@ -224,20 +242,5 @@
         }
           }
           
-    ],
-    "productId":"NOMINAS.CON.CONVENIO",
-    "masterArrangementId":"",
-    "roleName":"",
-    "transactionAmount":"0",
-    "reason":"",
-    "simulationRunReference":"",
-    "branch":"",
-    "lineOfBusiness":"",
-    "UUID":"123",
-    "Terminal":"TERMINAL1",
-    "Channel":"1",
-    "User":"HLACAN1",
-    "arrangementId":"NEW",
-    "currencyId":"GTQ",
-    "activityId":"LENDING-NEW-ARRANGEMENT"
+    ]
   } }
