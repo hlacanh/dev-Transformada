@@ -34,7 +34,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
 {
     "body": {
 
-      "UUID": .body.UUID,
+      "UUID": .root.UUID,
       "Terminal": .body.Terminal,
       "Channel": .body.Channel,
       "User": .body.User,
@@ -56,7 +56,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
             },
             {
               "fieldName": "L.DET.GARANTIA",
-              "fieldValue": .body.properties[0]
+              "fieldValue": .body.properties[0].ACCOUNT."L.TI.GARAN"
             },
             {
               "fieldName": "CASO.CREATIO",
@@ -83,7 +83,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
                         
             {
               "fieldName": "AMOUNT",
-              "fieldValue": .body.properties[1].COMMITMENT."AMOUNT"
+              "fieldValue": .body.properties[1].ACCOUNT."L.TI.GARAN"
             },
             {
               "fieldName": "TERM",
