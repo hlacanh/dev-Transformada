@@ -56,15 +56,15 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
             },
             {
               "fieldName": "L.DET.GARANTIA",
-              "fieldValue": .body.properties[0].ACCOUNT."L.DET.GARANTIA"
+              "fieldValue": .body.properties[0].
             },
             {
               "fieldName": "CASO.CREATIO",
-              "fieldValue": .body.properties[0].ACCOUNT."CASO.CREATIO"
+              "fieldValue": .body.properties[0].ACCOUNT
             },
             {
               "fieldName": "N.RESOLUCION",
-              "fieldValue": .body.properties[0].ACCOUNT."N.RESOLUCION"
+              "fieldValue": .body.properties[1].ACCOUNT."L.TI.GARAN"
             },
             {
               "fieldName": "Fecha.Form",

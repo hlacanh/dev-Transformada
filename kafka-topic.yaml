@@ -25,8 +25,7 @@ spec:
           period: 1000
         steps:
           - set-body:
-              expression:
-                simple: >
+                constant: >
                   {
                     "body":{
                     "customerIds":[
@@ -112,6 +111,7 @@ spec:
                         },
                         {
                         "COMMITMENT":{
+                         "L.TI.GARAN":"20",
                               "AMOUNT":"60000",
                               "TERM":"5Y"
                         }  
@@ -119,12 +119,14 @@ spec:
 
                         {
                             "PRINCIPALINT":{
+                             "L.TI.GARAN":"20",
                                 "FIXED.RATE:1":"19"
                             }
                           },
 
                           {
                             "PENALTYINT":{
+                             "L.TI.GARAN":"20",
                                 "FIXED.RATE:1":"12"
                             }
                           },
