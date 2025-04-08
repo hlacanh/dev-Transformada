@@ -48,15 +48,15 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
                         
             {
               "fieldName": "AMOUNT",
-              "fieldValue":if ($commitment.llaves.AMOUNT != null) $commitment.llaves.AMOUNT else "0"
+              "fieldValue": .body.properties[12].COMMITMENT."AMOUNT"
             },
             {
               "fieldName": "TERM",
-              "fieldValue": if ($commitment.llaves.TERM != null) $commitment.llaves.TERM else "0"
+              "fieldValue": .body.properties[12].COMMITMENT."TERM"
             },
             {
               "fieldName": "REVOLVING",
-              "fieldValue": if ($commitment.llaves.REVOLVING != null) $commitment.llaves.REVOLVING else "0"
+              "fieldValue": .body.properties[12].COMMITMENT."REVOLVING"
             }
           ]
         },
