@@ -55,7 +55,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                   "} }"
                 
             ))
-            ("Mensaje hardCoded ${body}")
+            .log("Mensaje hardCoded ${body}")
             .to("jslt:classpath:transformacion.jslt")
             .log("Mensaje hardcoded: ${body}");
     }
