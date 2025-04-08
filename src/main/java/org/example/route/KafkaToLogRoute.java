@@ -27,7 +27,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                     "\"properties\":[ "+
                     "    {"+
                     "        \"ACCOUNT\":{"+
-                    "              \\"L.TI.GARAN\":\"20\","+
+                    "              \"L.TI.GARAN\":\"20\","+
                     "              \"L.DET.GARANTIA\":\"40\","+
                     "              \"CASO.CREATIO\":\"1\","+
                     "              \"N.RESOLUCION\":\"1\","+
