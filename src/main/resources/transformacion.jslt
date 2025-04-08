@@ -3,6 +3,9 @@ let commitment={for (.body.COMMITMENT) string("llaves") : .}
 let account={for (.body.ACCOUNT) string("llaves") : .}
 let principalInt={for (.body.PRINCIPALINT) string("llaves") : .}
 
+let accounto={for (.body.account) string("llaves") : .}
+let account0={for ($accounto.llaves.account) string("llaves") : .}
+
 let settlemento={for (.body.settlement) string("llaves") : .}
 let settlement0={for ($settlemento.llaves.settlement) string("llaves") : .}
 let settlement1={for ($settlement0.llaves.reference) string("llaves") : .}
@@ -50,7 +53,8 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
                         
             {
               "fieldName": "L.TI.GARAN",
-              "fieldValue": .body.properties[0].fields[0].value
+              "fieldValue": if ($account0.llaves."L.TI.GARAN" != null)$account0.llaves."L.TI.GARAN" else "10"
+
             },
             {
               "fieldName": "L.DET.GARANTIA",
