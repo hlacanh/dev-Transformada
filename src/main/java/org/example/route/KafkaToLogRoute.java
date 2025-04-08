@@ -10,8 +10,8 @@ public class KafkaToLogRoute extends RouteBuilder {
     public void configure() {
         from("kafka:my-topic10?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
             .routeId("kafka-jslt-log")
-            .log("Mensaje original desde Kafka: ${body}")
+            .log("Mensaje original desde Kafka: ${simple(${body})}")
             .to("jslt:classpath:transformacion.jslt")
-            .log("Mensaje transformado: ${body}");
+            .log("Mensaje transformado: ${simple(${body})}");
     }
 }

@@ -21,8 +21,6 @@ spec:
   flows:
     - from:
         uri: timer:tick
-        parameters:
-          period: 1000
         steps:
           - set-body:
                 constant: >
