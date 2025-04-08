@@ -31,14 +31,14 @@ spec:
                     "body":{
                     "customerIds":[
                       {
-                          "customerId":"STRING",
-                          "customerRole":"STRING"
+                          "customerId":"100101",
+                          "customerRole":"owner"
                       }
                     ],
                     "properties":[
                         {
                             "ACCOUNT":{
-                                  "L.TI.GARAN":"STRING",
+                                  "L.TI.GARAN":"20",
                                   "L.DET.GARANTIA":"STRING",
                                   "CASO.CREATIO":"STRING",
                                   "N.RESOLUCION":"STRING",
@@ -118,9 +118,9 @@ spec:
                           },
                           {
                             "PRINCIPALINT":{
-                                "FIXED.RATE:1":"STRING",
-                        "DAY.BASIS":"STRING",
-                        "ACCRUAL.RULE":"STRING"
+                                "FIXED.RATE:1":"100",
+                        "DAY.BASIS":"1,
+                        "ACCRUAL.RULE":"YES"
                             }
                           },
                           {
@@ -263,9 +263,9 @@ spec:
                     "branch":"",
                     "lineOfBusiness":"",
                     "UUID":"123",
-                    "Terminal":"STRING",
+                    "Terminal":"TERMINAL2",
                     "Channel":"1",
-                    "User":"STRING",
+                    "User":"HLACAN2",
                     "arrangementId":"NEW",
                     "currencyId":"GTQ",
                     "activityId":"LENDING-NEW-ARRANGEMENT"
@@ -323,14 +323,14 @@ spec:
                     "body":{
                     "customerIds":[
                       {
-                          "customerId":"STRING",
-                          "customerRole":"STRING"
+                          "customerId":"100103",
+                          "customerRole":"benefitial owner"
                       }
                     ],
                     "properties":[
                         {
                             "ACCOUNT":{
-                                  "L.TI.GARAN":"STRING",
+                                  "L.TI.GARAN":"30",
                                   "L.DET.GARANTIA":"STRING",
                                   "CASO.CREATIO":"STRING",
                                   "N.RESOLUCION":"STRING",
@@ -353,7 +353,7 @@ spec:
                                   "Proyect.Nuevos":"STRING",
                                   "Act.Con.Pr.Nuev":"STRING",
                                   "Func.Sindicados":"STRING",					 
-                        "MEDIO.AMORT":"STRING",
+                                  "MEDIO.AMORT":"STRING",
                                   "ORIGEN":"STRING",
                                   "COMPLEMENTO":"STRING",
                                   "CARAC.REESTRUC":"STRING",
@@ -386,7 +386,7 @@ spec:
                                   "PROYECTO":"STRING",
                                   "MATRI.FISCAL":"STRING",
                                   "TIPO.INVERSION":"STRING",
-                        "PAIS.AP.FONDOS":"STRING",
+                                  "PAIS.AP.FONDOS":"STRING",
                                   "ORIG.CED.HIPO":"STRING",
                                   "N.INST.REAL.OPE":"STRING",
                                   "N.INST.ADQ.CE.H":"STRING",
@@ -404,15 +404,15 @@ spec:
                     },
                           {
                             "STATEMENT":{
-                                "IF.NO.MOVEMENT":"STRING", 
-                        "STMT.FQU.1:1":"STRING"
+                                "IF.NO.MOVEMENT":"NO", 
+                                "STMT.FQU.1:1":"SI"
                             }
                           },
                           {
                             "PRINCIPALINT":{
-                                "FIXED.RATE:1":"STRING",
-                        "DAY.BASIS":"STRING",
-                        "ACCRUAL.RULE":"STRING"
+                                "FIXED.RATE:1":"200",
+                        "DAY.BASIS":"2",
+                        "ACCRUAL.RULE":"NO"
                             }
                           },
                           {
@@ -555,9 +555,9 @@ spec:
                     "branch":"",
                     "lineOfBusiness":"",
                     "UUID":"123",
-                    "Terminal":"STRING",
+                    "Terminal":"TERMINAL1",
                     "Channel":"1",
-                    "User":"STRING",
+                    "User":"HLACAN1",
                     "arrangementId":"NEW",
                     "currencyId":"GTQ",
                     "activityId":"LENDING-NEW-ARRANGEMENT"
