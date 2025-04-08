@@ -52,7 +52,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
                         
             {
               "fieldName": "L.TI.GARAN",
-              "fieldValue": if (.body.properties[0].ACCOUNT."L.TI.GARAN" == null) .body.properties[0].ACCOUNT."L.TI.GARAN" else .body.properties[0].ACCOUNT."L.TI.GARAN"
+              "fieldValue": .body.UUID
             },
             {
               "fieldName": "L.DET.GARANTIA",
@@ -60,7 +60,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
             },
             {
               "fieldName": "CASO.CREATIO",
-              "fieldValue": .body.properties[0].ACCOUNT
+              "fieldValue": "25"
             },
             {
               "fieldName": "N.RESOLUCION",
@@ -72,7 +72,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
             },
             {
               "fieldName": "Tipo.Docto.Form",
-              "fieldValue": .body.properties[0].ACCOUNT."Tipo.Docto.Form"
+              "fieldValue": "AG"
             }
           ]
         },
