@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
-  name: my-topic1
+  name: my-topic10
   namespace: amq-streams-kafka  # ¡Importante! Debe ser el namespace donde vive el clúster Kafka
   labels:
     strimzi.io/cluster: amq-streams-kafka  # Nombre del Kafka definido en el CR Kafka
@@ -295,7 +295,7 @@ spec:
           - convert-body-to:
               type: String
           - to:
-              uri: kafka:my-topic1
+              uri: kafka:my-topic10
               parameters:
                 brokers: cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092
 ---
