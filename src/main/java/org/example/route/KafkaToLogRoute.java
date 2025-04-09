@@ -44,7 +44,7 @@ public class KafkaToLogRoute extends RouteBuilder {
             })
             .log("JSON que va a ser transformado: ${body}")
             // Aquí usamos el procesador JsltProcessor en lugar de to()
-            .process(new org.apache.camel.component.jslt.JsltProcessor("classpath:transformacion.jslt"))
+            .to("jslt:classpath:transformacion.jslt")
             .log("Mensaje transformado: ${body}");
     }
 }
