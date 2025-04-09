@@ -2,11 +2,13 @@ package org.example.route;
 
 import org.apache.camel.builder.RouteBuilder;
 import jakarta.enterprise.context.ApplicationScoped;
+import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.datataformat.JsonDataFormat;
 
 @ApplicationScoped
 public class KafkaToLogRoute extends RouteBuilder {
 
-    JsonDataFormat jsonDataFormat = new JsonDataFormat();
+    public JsonDataFormat jsonDataFormat = new JsonDataFormat();
     jsonDataFormat.setPrettyPrint(false);
 
     @Override
@@ -18,7 +20,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                 System.out.println("Mensaje original desde kafka (procesador):" + rawBody);
         
             })
-            .log(LoggingLevel.INFO, "Mensaje original desde kafka (log): $ {body}")
+            .log(LoggingLevel.INFO, "Mensaje original desde kafka (log): ${body}")
             .marshal(jsonDataFormat)
             .log("Mensaje original sin identacion: ${body}")
             .unmarshal(jsonDataFormat)
