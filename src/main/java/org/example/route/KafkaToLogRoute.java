@@ -12,7 +12,7 @@ public class KafkaToLogRoute extends RouteBuilder {
 
     @Override
     public void configure() {
-        JsonDataFormat jsonDataFormat = new JsonDataFormat();
+        JacksonDataFormat jsonDataFormat = new JacksonDataFormat();
         jsonDataFormat.setPrettyPrint(false);
 
         from("kafka:my-topic10?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
