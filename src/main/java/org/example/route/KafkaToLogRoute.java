@@ -3,7 +3,7 @@ package org.example.route;
 import org.apache.camel.builder.RouteBuilder;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.apache.camel.LoggingLevel;
-import org.apache.camel.model.datataformat.JsonDataFormat;
+import org.apache.camel.model.dataformat.JsonDataFormat;
 
 @ApplicationScoped
 public class KafkaToLogRoute extends RouteBuilder {
