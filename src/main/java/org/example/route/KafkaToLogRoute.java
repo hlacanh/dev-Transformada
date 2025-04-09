@@ -5,7 +5,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.model.dataformat.JsonDataFormat;
 import org.apache.camel.component.jackson.JacksonDataFormat;
-import con.fasterxml.jackson.daabind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ApplicationScoped
 public class KafkaToLogRoute extends RouteBuilder {
