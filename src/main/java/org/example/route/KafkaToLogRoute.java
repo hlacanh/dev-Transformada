@@ -40,12 +40,11 @@ public class KafkaToLogRoute extends RouteBuilder {
                     exchange.getMessage().setBody(compactJson);
                 } catch (Exception e) {
                     System.err.println("Error al procesar JSON: " + e.getMessage());
-                    // No interrumpimos el flujo en caso de error
                 }
             })
-
-           .log("JSON que va a ser transformado por JSLT: ${body}");
-            // Aplicar transformación JSLT
-            .to("jslt:classpath:transformacion.jslt");
+            .log("JSON que va a ser transformado: ${body}")
+            // Aquí usamos el procesador JsltProcessor en lugar de to()
+            .process(new org.apache.camel.component.jslt.JsltProcessor("classpath:transformacion.jslt"))
+            .log("Mensaje transformado: ${body}");
     }
 }
