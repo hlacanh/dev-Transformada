@@ -37,7 +37,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                     
                     System.out.println("JSON compacto sin indentación: " + compactJson);
                     // Modificamos el body para que se envíe el JSON compacto
-                    exchange.getMessage().setBody(compactJson);
+                    //exchange.getMessage().setBody(compactJson);
                 } catch (Exception e) {
                     System.err.println("Error al procesar JSON: " + e.getMessage());
                 }
