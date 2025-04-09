@@ -44,8 +44,8 @@ public class KafkaToLogRoute extends RouteBuilder {
                 }
             })
 
-           .log("JSON que va a ser transformado por JSLT: ${body}")
+           .log("JSON que va a ser transformado por JSLT: ${body}");
             // Aplicar transformación JSLT
-            .to("jslt:classpath:transformacion.jslt")
+            .to("jslt:classpath:transformacion.jslt");
     }
 }
