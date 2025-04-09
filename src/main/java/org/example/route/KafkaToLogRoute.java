@@ -9,10 +9,11 @@ import org.apache.camel.model.datataformat.JsonDataFormat;
 public class KafkaToLogRoute extends RouteBuilder {
 
     public JsonDataFormat jsonDataFormat = new JsonDataFormat();
-    jsonDataFormat.setPrettyPrint(false);
 
     @Override
     public void configure() {
+        jsonDataFormat.setPrettyPrint(false);
+
         from("kafka:my-topic10?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
             .routeId("kafka-jslt-log")
             .process(exchange -> {
