@@ -34,7 +34,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
 {
     "body": {
 
-      "productId": "NOMINAS.CON.CONVENIO",
+      "productId": .body.productId,
       "masterArrangementId": .body.masterArrangementId,
       "roleName": .body.roleName,
       "transactionAmount": .body.transactionAmount,
@@ -46,10 +46,11 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
       "Terminal": .body.Terminal,
       "Channel": .body.Channel,
       "User": .body.User,
-      "arrangementId":"NEW",
-      "currencyId":"GTQ",
-      "activityId":"LENDING-NEW-ARRANGEMENT",
-  
+      "arrangementId": .body.arrangementId,
+      "currencyId": .body.currencyId,
+      "activityId": .body.activityId,
+      "effectiveDate": .body.effectiveDate,
+
       "properties": [
         {
           "propertyId": "ACCOUNT",
@@ -115,6 +116,238 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
             {
               "fieldName": "Fech.Acta.Aprob",
               "fieldValue": .body.properties[0].ACCOUNT."Fech.Acta.Aprob"
+            },
+            {
+              "fieldName": "Fech.Acta.Aprob",
+              "fieldValue": .body.properties[0].ACCOUNT."Fech.Acta.Aprob"
+            },
+            {
+              "fieldName": "EJE.APROBO",
+              "fieldValue": .body.properties[0].ACCOUNT."EJE.APROBO"
+            },
+            {
+              "fieldName": "Codigo.de.Banca",
+              "fieldValue": .body.properties[0].ACCOUNT."Codigo.de.Banca"
+            },
+            {
+              "fieldName": "L.SEGMENTO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.SEGMENTO"
+            },
+            {
+              "fieldName": "SUBSEGMENTO",
+              "fieldValue": .body.properties[0].ACCOUNT."SUBSEGMENTO"
+            },
+            {
+              "fieldName": "Crit.Valuacion",
+              "fieldValue": .body.properties[0].ACCOUNT."Crit.Valuacion"
+            },
+            {
+              "fieldName": "Proyect.Nuevos",
+              "fieldValue": .body.properties[0].ACCOUNT."Proyect.Nuevos"
+            },
+            {
+              "fieldName": "Act.Con.Pr.Nuev",
+              "fieldValue": .body.properties[0].ACCOUNT."Act.Con.Pr.Nuev"
+            },
+            {
+              "fieldName": "Func.Sindicados",
+              "fieldValue": .body.properties[0].ACCOUNT."Func.Sindicados"
+            },
+            {
+              "fieldName": "MEDIO.AMORT",
+              "fieldValue": .body.properties[0].ACCOUNT."MEDIO.AMORT"
+            },
+            {
+              "fieldName": "ORIGEN",
+              "fieldValue": .body.properties[0].ACCOUNT."ORIGEN"
+            },
+            {
+              "fieldName": "COMPLEMENTO",
+              "fieldValue": .body.properties[0].ACCOUNT."COMPLEMENTO"
+            },
+            {
+              "fieldName": "CARAC.REESTRUC",
+              "fieldValue": .body.properties[0].ACCOUNT."CARAC.REESTRUC"
+            },
+            {
+              "fieldName": "COD.PAG.DEUDA",
+              "fieldValue": .body.properties[0].ACCOUNT."COD.PAG.DEUDA"
+            },
+            {
+              "fieldName": "TIPO.PRESTAMO",
+              "fieldValue": .body.properties[0].ACCOUNT."TIPO.PRESTAMO"
+            },
+            {
+              "fieldName": "Consumo.Viviend",
+              "fieldValue": .body.properties[0].ACCOUNT."Consumo.Viviend"
+            },
+            {
+              "fieldName": "Act.Economica",
+              "fieldValue": .body.properties[0].ACCOUNT."Act.Economica"
+            },
+            {
+              "fieldName": "COD.DESTINO",
+              "fieldValue": .body.properties[0].ACCOUNT."COD.DESTINO"
+            },
+            {
+              "fieldName": "Tipo.de.Gasto",
+              "fieldValue": .body.properties[0].ACCOUNT."Tipo.de.Gasto"
+            },
+            {
+              "fieldName": "Codigo.CGE",
+              "fieldValue": .body.properties[0].ACCOUNT."Codigo.CGE"
+            },
+            {
+              "fieldName": "Tamano.Empresa",
+              "fieldValue": .body.properties[0].ACCOUNT."Tamano.Empresa"
+            },
+            {
+              "fieldName": "DEU.MAYORES",
+              "fieldValue": .body.properties[0].ACCOUNT."DEU.MAYORES"
+            },
+            {
+              "fieldName": "SECTORIZACION",
+              "fieldValue": .body.properties[0].ACCOUNT."SECTORIZACION"
+            },
+            {
+              "fieldName": "SOLICIT.ACTIVO",
+              "fieldValue": .body.properties[0].ACCOUNT."SOLICIT.ACTIVO"
+            },
+            {
+              "fieldName": "COD.ASEGURADORA",
+              "fieldValue": .body.properties[0].ACCOUNT."COD.ASEGURADORA"
+            },
+            {
+              "fieldName": "No.Poliza",
+              "fieldValue": .body.properties[0].ACCOUNT."No.Poliza"
+            },
+            {
+              "fieldName": "Endoso.Seguro",
+              "fieldValue": .body.properties[0].ACCOUNT."Endoso.Seguro"
+            },
+            {
+              "fieldName": "No.Certificado",
+              "fieldValue": .body.properties[0].ACCOUNT."No.Certificado"
+            },
+            {
+              "fieldName": "Valor.Poliza",
+              "fieldValue": .body.properties[0].ACCOUNT."Valor.Poliza"
+            },
+            {
+              "fieldName": "Cob.a.Favor",
+              "fieldValue": .body.properties[0].ACCOUNT."Cob.a.Favor"
+            },
+            {
+              "fieldName": "Prima.Anual",
+              "fieldValue": .body.properties[0].ACCOUNT."Prima.Anual"
+            },
+            {
+              "fieldName": "Valor.Hipoteca",
+              "fieldValue": .body.properties[0].ACCOUNT."Valor.Hipoteca"
+            },
+            {
+              "fieldName": "Fecha.Emision",
+              "fieldValue": .body.properties[0].ACCOUNT."Fecha.Emision"
+            },
+            {
+              "fieldName": "Fecha.Vencim",
+              "fieldValue": .body.properties[0].ACCOUNT."Fecha.Vencim"
+            },
+            {
+              "fieldName": "L.TI.ACT.CRED",
+              "fieldValue": .body.properties[0].ACCOUNT."L.TI.ACT.CRED"
+            },
+            {
+              "fieldName": "L.ESTADOS",
+              "fieldValue": .body.properties[0].ACCOUNT."L.ESTADOS"
+            },
+            {
+              "fieldName": "TIPO.CEDULA",
+              "fieldValue": .body.properties[0].ACCOUNT."TIPO.CEDULA"
+            },
+            {
+              "fieldName": "SIT.ACT.CREDIT",
+              "fieldValue": .body.properties[0].ACCOUNT."SIT.ACT.CREDIT"
+            },
+            {
+              "fieldName": "CONSTRUCTOR",
+              "fieldValue": .body.properties[0].ACCOUNT."CONSTRUCTOR"
+            },
+            {
+              "fieldName": "PROYECTO",
+              "fieldValue": .body.properties[0].ACCOUNT."PROYECTO"
+            },
+            {
+              "fieldName": "MATRI.FISCAL",
+              "fieldValue": .body.properties[0].ACCOUNT."MATRI.FISCAL"
+            },
+            {
+              "fieldName": "TIPO.INVERSION",
+              "fieldValue": .body.properties[0].ACCOUNT."TIPO.INVERSION"
+            },
+            {
+              "fieldName": "INVERSION",
+              "fieldValue": .body.properties[0].ACCOUNT."INVERSION"
+            },
+            {
+              "fieldName": "PAIS.AP.FONDOS",
+              "fieldValue": .body.properties[0].ACCOUNT."PAIS.AP.FONDOS"
+            },
+            {
+              "fieldName": "ORIG.CED.HIPO",
+              "fieldValue": .body.properties[0].ACCOUNT."ORIG.CED.HIPO"
+            },
+            {
+              "fieldName": "N.INST.REAL.OPE",
+              "fieldValue": .body.properties[0].ACCOUNT."N.INST.REAL.OPE"
+            },
+            {
+              "fieldName": "N.INST.ADQ.CE.H",
+              "fieldValue": .body.properties[0].ACCOUNT."N.INST.ADQ.CE.H"
+            },
+            {
+              "fieldName": "Fecha.Vencim",
+              "fieldValue": .body.properties[0].ACCOUNT."Fecha.Vencim"
+            },
+            {
+              "fieldName": "FEC.VENC.REPO",
+              "fieldValue": .body.properties[0].ACCOUNT."FEC.VENC.REPO"
+            },
+            {
+              "fieldName": "AREA.COBRO",
+              "fieldValue": .body.properties[0].ACCOUNT."AREA.COBRO"
+            },
+            {
+              "fieldName": "GEST.COBRO",
+              "fieldValue": .body.properties[0].ACCOUNT."GEST.COBRO"
+            },
+            {
+              "fieldName": "NUM.CONT.REPO",
+              "fieldValue": .body.properties[0].ACCOUNT."NUM.CONT.REPO"
+            },
+            {
+              "fieldName": "FECHA.VIGENCIA",
+              "fieldValue": .body.properties[0].ACCOUNT."FECHA.VIGENCIA"
+            },
+            {
+              "fieldName": "TIPO.CANAL",
+              "fieldValue": .body.properties[0].ACCOUNT."TIPO.CANAL"
+            },
+            {
+              "fieldName": "FEC.EMI.CONT",
+              "fieldValue": .body.properties[0].ACCOUNT."FEC.EMI.CONT"
+            },
+            {
+              "fieldName": "AGRUPACION",
+              "fieldValue": .body.properties[0].ACCOUNT."AGRUPACION"
+            },
+            {
+              "fieldName": "Reg.Propiedad",
+              "fieldValue": .body.properties[0].ACCOUNT."Reg.Propiedad"
+            },
+            {
+              "fieldName": "NUM.ACTA",
+              "fieldValue": .body.properties[0].ACCOUNT."NUM.ACTA"
             }
           ]
         },
@@ -152,31 +385,56 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
             }
           ]
         },
-
-        {
-          "propertyId": "SETTLEMENT",
-          "fields": [
-            {
-              "fieldName": "PAYIN.SETTLEMENT:1",
-              "fieldValue": if ($settlement0.llaves."PAYIN.SETTLEMENT:1" != null)$settlement0.llaves."PAYIN.SETTLEMENT:1" else "0"
-            },
-            {
-              "fieldName": "PAYOUT.SETTLEMENT:1",
-              "fieldValue": if ($settlement0.llaves."PAYOUT.SETTLEMENT:1" != null)$settlement0.llaves."PAYOUT.SETTLEMENT:1" else "0"
-            },
-            {
-              "fieldName": "PAYOUT.ACCOUNT:1:1",
-              "fieldValue": if ($settlement1.llaves."PAYOUT.ACCOUNT:1:1" != null)$settlement1.llaves."PAYOUT.ACCOUNT:1:1" else "0"
-            }
-          ]
-        },
-
         {
           "propertyId": "GASTFORMALIZA",
           "fields": [
             {
               "fieldName": "FIXED.AMOUNT",
-              "fieldValue": if ($gastroformalizo.llaves."FIXED.AMOUNT"!= null) $gastroformalizo.llaves."FIXED.AMOUNT" else "0"
+              "fieldValue": .body.properties[4].GASTFORMALIZA."FIXED.AMOUNT"
+            }
+          ]
+        },
+        {
+          "propertyId": "SETTLEMENT",
+          "fields": [
+            {
+              "fieldName": "PAYOUT.SETTLEMENT:1",
+              "fieldValue": .body.properties[5].SETTLEMENT."PAYOUT.SETTLEMENT:1"
+            }
+          ]
+        },        {
+          "propertyId": "SEGSALINSOLUTOS",
+          "fields": [
+            {
+              "fieldName": "FIXED.AMOUNT",
+              "fieldValue": .body.properties[6].SEGSALINSOLUTOS."FIXED.AMOUNT"
+            }
+          ]
+        },
+        {
+          "propertyId": "SEGDESEMPLEO",
+          "fields": [
+            {
+              "fieldName": "FIXED.AMOUNT",
+              "fieldValue": .body.properties[7].SEGDESEMPLEO."FIXED.AMOUNT"
+            }
+          ]
+        },
+                {
+          "propertyId": "SEGDESEINI",
+          "fields": [
+            {
+              "fieldName": "FIXED.AMOUNT",
+              "fieldValue": .body.properties[8].SEGDESEINI."FIXED.AMOUNT"
+            }
+          ]
+        },
+         {
+          "propertyId": "RETCONSDEU",
+          "fields": [
+            {
+              "fieldName": "FIXED.AMOUNT",
+              "fieldValue": .body.properties[9].RETCONSDEU."FIXED.AMOUNT"
             }
           ]
         },
@@ -184,72 +442,93 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
           "propertyId": "SCHEDULE",
           "fields": [
             {
-              "fieldName": "PAYMENT.TYPE:1",
-              "fieldValue": if ($schedul1."PAYMENT.TYPE:1"!= null) $schedul1."PAYMENT.TYPE:1" else "0"
-            },
-            {
-              "fieldName": "PAYMENT.METHOD:1",
-              "fieldValue": if ($schedul1."PAYMENT.METHOD:1"!= null) $schedul1."PAYMENT.METHOD:1" else "0"
-            },
-            {
               "fieldName": "PROPERTY:1:1",
-              "fieldValue": if ($schedul1po.llaves."PROPERTY:1:1"!= null) $schedul1po.llaves."PROPERTY:1:1" else "0"
+              "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:1:1"
             },
             {
               "fieldName": "PERCENTAGE:1:1",
-              "fieldValue": if ($schedul1pa.llaves."PERCENTAGE:1:1"!= null) $schedul1pa.llaves."PERCENTAGE:1:1" else "0"
+              "fieldValue": .body.properties[10].SCHEDULE."PERCENTAGE:1:1"
             },
             {
-              "fieldName": "START.DATE:1:1",
-              "fieldValue": if ($schedul1pa.llaves."START.DATE:1:1"!= null) $schedul1pa.llaves."START.DATE:1:1" else "0"
+              "fieldName": "START.DATE:1:11",
+              "fieldValue": .body.properties[10].SCHEDULE."START.DATE:1:1"
             },
             {
               "fieldName": "BILL.TYPE:1",
-              "fieldValue": if ($schedul1pa.llaves."BILL.TYPE:1"!= null) $schedul1pa.llaves."BILL.TYPE:1" else "0"
+              "fieldValue": .body.properties[10].SCHEDULE."BILL.TYPE:1"
             },
             {
               "fieldName": "PAYMENT.TYPE:2",
-              "fieldValue": if ($schedul2."PAYMENT.TYPE:2"!= null) $schedul2."PAYMENT.TYPE:2" else "0"
+              "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.TYPE:2"
             },
             {
               "fieldName": "PAYMENT.METHOD:2",
-              "fieldValue": if ($schedul2."PAYMENT.METHOD:2"!= null) $schedul2."PAYMENT.METHOD:2" else "0"
+              "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.METHOD:2"
             },
             {
               "fieldName": "PAYMENT.FREQ:2",
-              "fieldValue": if ($schedul2."PAYMENT.FREQ:2"!= null) $schedul2."PAYMENT.FREQ:2" else "0"
+              "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.FREQ:2"
             },
             {
               "fieldName": "PROPERTY:2:1",
-              "fieldValue": if ($schedul2.properties[0]."PROPERTY:2:1"!= null) $schedul2.properties[0]."PROPERTY:2:1" else "0"
+              "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:2:1"
             },
             {
               "fieldName": "PROPERTY:2:2",
-              "fieldValue": if ($schedul2po.llaves."PROPERTY:2:2"!= null) $schedul2po.llaves."PROPERTY:2:2" else "0"
+              "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:2:2"
+            },
+            {
+              "fieldName": "PERCENTAGE:2:1",
+              "fieldValue": .body.properties[10].SCHEDULE."PERCENTAGE:2:1"
+            },
+            {
+              "fieldName": "START.DATE:2:1",
+              "fieldValue": 
             },
             {
               "fieldName": "BILL.TYPE:2",
-              "fieldValue": if ($schedul2pa.llaves."BILL.TYPE:2"!= null) $schedul2pa.llaves."BILL.TYPE:2" else "0"
+              "fieldValue": 
+            }, 
+            {
+              "fieldName": "ISSUE.BILL:2",
+              "fieldValue": 
             },
             {
               "fieldName": "PAYMENT.TYPE:3",
-              "fieldValue": if ($schedul3."PAYMENT.TYPE:3"!= null) $schedul3."PAYMENT.TYPE:3" else "0"
+              "fieldValue": 
             },
             {
               "fieldName": "PAYMENT.METHOD:3",
-              "fieldValue": if ($schedul3."PAYMENT.METHOD:3"!= null) $schedul3."PAYMENT.METHOD:3" else "0"
+              "fieldValue": 
             },
             {
               "fieldName": "PAYMENT.FREQ:3",
-              "fieldValue": if ($schedul3."PAYMENT.FREQ:3"!= null) $schedul3."PAYMENT.FREQ:3" else "0"
+              "fieldValue": 
             },
             {
               "fieldName": "PROPERTY:3:1",
-              "fieldValue": if ($schedul3po.llaves."PROPERTY:3:1"!= null) $schedul3po.llaves."PROPERTY:3:1" else "0"
+              "fieldValue": 
+            }, 
+            {
+              "fieldName": "PROPERTY:3:1",
+              "fieldValue": 
+            }, 
+            {
+              "fieldName": "PERCENTAGE:3:1",
+              "fieldValue": 
+            }
+            ,
+            {
+              "fieldName": "START.DATE:3:1",
+              "fieldValue": 
             }, 
             {
               "fieldName": "BILL.TYPE:3",
-              "fieldValue": if ($schedul3pa.llaves."BILL.TYPE:3"!= null) $schedul3pa.llaves."BILL.TYPE:3" else "0"
+              "fieldValue": 
+            }, 
+            {
+              "fieldName": "ISSUE.BILL:3",
+              "fieldValue": 
             }
           ]
         }
