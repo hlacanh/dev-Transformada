@@ -58,11 +58,11 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
                         
             {
               "fieldName": "L.TI.GARAN",
-              "fieldValue": if (.body.properties[0].ACCOUNT."L.TI.GARAN" != null) .body.properties[0].ACCOUNT."L.TI.GARAN" else "10"
+              "fieldValue": .body.properties[0].ACCOUNT."L.TI.GARAN"
             },
             {
               "fieldName": "L.DET.GARANTIA",
-              "fieldValue": if (.body.properties[0].fields[1].fieldValue) .body.properties[0].fields[1].fieldValue else "999"
+              "fieldValue": .body.properties[0].ACCOUNT."L.DET.GARANTIA"
             },
             {
               "fieldName": "CASO.CREATIO",
@@ -79,6 +79,42 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
             {
               "fieldName": "Tipo.Docto.Form",
               "fieldValue": .body.properties[0].ACCOUNT."Tipo.Docto.Form"
+            },
+            {
+              "fieldName": "No.Escritura",
+              "fieldValue": .body.properties[0].ACCOUNT."No.Escritura"
+            },
+            {
+              "fieldName": "NOTARIO",
+              "fieldValue": .body.properties[0].ACCOUNT."NOTARIO"
+            },
+            {
+              "fieldName": "Cupo.Inter",
+              "fieldValue": .body.properties[0].ACCOUNT."Cupo.Inter"
+            },
+            {
+              "fieldName": "Grupo.Planillas",
+              "fieldValue": .body.properties[0].ACCOUNT."Grupo.Planillas"
+            },
+            {
+              "fieldName": "Gru.Caja.Ahorro",
+              "fieldValue": .body.properties[0].ACCOUNT."Gru.Caja.Ahorro"
+            },
+            {
+              "fieldName": "Origen.Fondos",
+              "fieldValue": .body.properties[0].ACCOUNT."Origen.Fondos"
+            },
+            {
+              "fieldName": "Municip.Fondos",
+              "fieldValue": .body.properties[0].ACCOUNT."Municip.Fondos"
+            },
+            {
+              "fieldName": "Ent.Q.Autorizo",
+              "fieldValue": .body.properties[0].ACCOUNT."Ent.Q.Autorizo"
+            },
+            {
+              "fieldName": "Fech.Acta.Aprob",
+              "fieldValue": .body.properties[0].ACCOUNT."Fech.Acta.Aprob"
             }
           ]
         },
