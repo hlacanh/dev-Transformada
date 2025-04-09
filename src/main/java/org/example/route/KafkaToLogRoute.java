@@ -24,24 +24,28 @@ public class KafkaToLogRoute extends RouteBuilder {
             })
             // Opción 2: Log estándar
             .log(LoggingLevel.INFO, "Mensaje original desde Kafka (log): ${body}")
-            // Opción 3: Mostrar JSON compacto sin indentación
             .process(exchange -> {
                 try {
                     String jsonBody = exchange.getMessage().getBody(String.class);
                     // Usar ObjectMapper para compactar el JSON
                     ObjectMapper mapper = new ObjectMapper();
+                    mapper.configure(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+                    mapper.configure(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
+                    
                     Object json = mapper.readValue(jsonBody, Object.class);
                     String compactJson = mapper.writeValueAsString(json);
                     
                     System.out.println("JSON compacto sin indentación: " + compactJson);
-                    // No modificamos el body para no afectar el flujo
+                    // Modificamos el body para que se envíe el JSON compacto
+                    exchange.getMessage().setBody(compactJson);
                 } catch (Exception e) {
                     System.err.println("Error al procesar JSON: " + e.getMessage());
+                    // No interrumpimos el flujo en caso de error
                 }
             })
+
+           .log("JSON que va a ser transformado por JSLT: ${body}")
             // Aplicar transformación JSLT
             .to("jslt:classpath:transformacion.jslt")
-            // Log del mensaje transformado
-            .log("Mensaje transformado: ${body}");
     }
 }
