@@ -23,7 +23,7 @@
           "customerRole":"benefitial owner"
       }
     ],
-    
+
     "properties":[
         {
             "ACCOUNT":{
@@ -36,7 +36,7 @@
                   "No.Escritura":"STRING",
                   "NOTARIO":"STRING",
                   "Cupo.Inter":"STRING",
-        "Grupo.Planillas":"STRING",
+                "Grupo.Planillas":"STRING",
                   "Gru.Caja.Ahorro":"STRING",
                   "Origen.Fondos":"STRING",
                   "Municip.Fondos":"STRING",
