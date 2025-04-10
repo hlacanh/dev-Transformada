@@ -1,36 +1,8 @@
 
-let commitment={for (.body.COMMITMENT) string("llaves") : .}
-let principalInt={for (.body.PRINCIPALINT) string("llaves") : .}
-
-let accounto={for (.body.ACCOUNT) string("llaves") : .}
-let account0={for ($accounto.llaves.account) string("llaves") : .}
-
-let settlemento={for (.body.settlement) string("llaves") : .}
-let settlement0={for ($settlemento.llaves.settlement) string("llaves") : .}
-let settlement1={for ($settlement0.llaves.reference) string("llaves") : .}
-
-let schedul0={for (.body.schedule) string("llaves"):.}
-
-let schedul1=$schedul0.llaves.payment[0] 
-let schedul1po={for ($schedul1.properties) string("llaves") : .}
-let schedul1pa={for ($schedul1.payments) string("llaves") : .}
-
-let schedul2=$schedul0.llaves.payment[1]
-let schedul2po={for ($schedul2.properties) string("llaves") : .}
-let schedul2pa={for ($schedul2.payments) string("llaves") : .}
-
-let schedul3=$schedul0.llaves.payment[2]
-let schedul3po={for ($schedul3.properties) string("llaves") : .}
-let schedul3pa={for ($schedul3.payments) string("llaves") : .}
-
-let principalino={for (.body.PRINCIPALINT) string("llaves") : .}
-let principalin1={for ($principalino.llaves."interest") string("llaves") : .}
-
-let penaltyino={for (.body.PENALTYINT) string("llaves") : .}
-let penaltyin1={for ($penaltyino.llaves."interest") string("llaves") : .}
-
-let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
-
+{
+        "records": [
+          {
+            "value": 
 {
     "body": {
 
@@ -534,4 +506,7 @@ let gastroformalizo={for (.body.GASTFORMALIZA) string("llaves") : .}
         }
       ]
     }
-  }
+  }}
+
+        ]
+      }
