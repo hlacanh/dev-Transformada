@@ -22,29 +22,10 @@ public class KafkaToLogRoute extends RouteBuilder {
                 String rawBody = exchange.getMessage().getBody(String.class);
                 System.out.println("Mensaje original desde Kafka (procesador): " + rawBody);
             })
-            // Opción 2: Log estándar
-            .log(LoggingLevel.INFO, "Mensaje original desde Kafka (log): ${body}")
-            .process(exchange -> {
-                try {
-                    String jsonBody = exchange.getMessage().getBody(String.class);
-                    // Usar ObjectMapper para compactar el JSON
-                    ObjectMapper mapper = new ObjectMapper();
-                    mapper.configure(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
-                    mapper.configure(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
-                    
-                    Object json = mapper.readValue(jsonBody, Object.class);
-                    String compactJson = mapper.writeValueAsString(json);
-                    
-                    System.out.println("JSON compacto sin indentación: " + compactJson);
-                    // Modificamos el body para que se envíe el JSON compacto
-                    //exchange.getMessage().setBody(compactJson);
-                } catch (Exception e) {
-                    System.err.println("Error al procesar JSON: " + e.getMessage());
-                }
-            })
-            .log("JSON que va a ser transformado: ${body}")
             // Aquí usamos el procesador JsltProcessor en lugar de to()
             .to("jslt:classpath:transformacion.jslt")
+            .to("uri:https://prdct-transact-env0-test-3scale-apicast-staging.apps.os-nonprod.domain.net/CreateLoan")
+            .log("Respuesta de la api: ${body}");
             .log("Mensaje transformado: ${body}");
     }
 }
