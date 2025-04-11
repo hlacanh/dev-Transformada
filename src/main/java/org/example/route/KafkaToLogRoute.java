@@ -25,9 +25,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                     })
                     // Aquí usamos el procesador JsltProcessor en lugar de to()
                     .to("jslt:classpath:transformacion.jslt")
-                    .to("uri:https://prdct-transact-env0-test-3scale-apicast-staging.apps.os-nonprod.domain.net/CreateLoan")
                     .log("Respuesta de la api: ${body}")
-                    .log("Mensaje transformado: ${body}");
         }
         catch(Exception e) {
             .log("Ha ocurrido un error con la configuracion del endopint " + e.getMessage() + e.printStackTrace());
