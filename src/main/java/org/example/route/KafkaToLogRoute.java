@@ -15,17 +15,25 @@ public class KafkaToLogRoute extends RouteBuilder {
         JacksonDataFormat jsonDataFormat = new JacksonDataFormat();
         jsonDataFormat.setPrettyPrint(false);
 
+        try {
         from("kafka:my-topic10?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
-            .routeId("kafka-jslt-log")
-            // Opción 1: Mostrar mensaje original usando procesador
-            .process(exchange -> {
-                String rawBody = exchange.getMessage().getBody(String.class);
-                System.out.println("Mensaje original desde Kafka (procesador): " + rawBody);
-            })
-            // Aquí usamos el procesador JsltProcessor en lugar de to()
-            .to("jslt:classpath:transformacion.jslt")
-            .to("uri:https://prdct-transact-env0-test-3scale-apicast-staging.apps.os-nonprod.domain.net/CreateLoan")
-            .log("Respuesta de la api: ${body}")
-            .log("Mensaje transformado: ${body}");
+                    .routeId("kafka-jslt-log")
+                    // Opción 1: Mostrar mensaje original usando procesador
+                    .process(exchange -> {
+                        String rawBody = exchange.getMessage().getBody(String.class);
+                        System.out.println("Mensaje original desde Kafka (procesador): " + rawBody);
+                    })
+                    // Aquí usamos el procesador JsltProcessor en lugar de to()
+                    .to("jslt:classpath:transformacion.jslt")
+                    .to("uri:https://prdct-transact-env0-test-3scale-apicast-staging.apps.os-nonprod.domain.net/CreateLoan")
+                    .log("Respuesta de la api: ${body}")
+                    .log("Mensaje transformado: ${body}");
+        }
+        catch(Exception e) {
+            .log("Ha ocurrido un error con la configuracion del endopint " + e.getMessage() + e.printStackTrace());
+
+        }
+
+        
     }
 }
