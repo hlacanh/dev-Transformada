@@ -28,6 +28,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                     .log("Respuesta de la api: ${body}");
         }
         catch(Exception e) {
+            .log("Ha ocurrido un error con la configuracion del endopint " + e.getMessage() );
 
         }
 
