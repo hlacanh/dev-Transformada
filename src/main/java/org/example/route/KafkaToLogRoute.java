@@ -11,10 +11,12 @@ import javax.net.ssl.X509TrustManager;
 import java.security.cert.X509Certificate;
 import org.apache.camel.support.jsse.SSLContextParameters;
 import org.apache.camel.support.jsse.TrustManagersParameters;
-
-
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @ApplicationScoped
 public class KafkaToLogRoute extends RouteBuilder {
