@@ -26,9 +26,8 @@ public class KafkaToLogRoute extends RouteBuilder {
                 .log("JSON de entrada: ${body}")
                 .setHeader("Content-Type", constant("application/vnd.kafka.json.v2+json"))
                 .setHeader("Accept", constant("application/json"))
-                .setHeader("user_key", constant("bdc96a4bd17bbe1f7c1960b0912e68a0"))
-                .to("https://prdct-transact-env0-test-3scale-apicast-staging.apps.os-nonprod.domain.net/CreateLoan?httpMethod=POST")
-    
+                .setHeader("user_key", constant("c42e2d875cc2712506851a7cc228c133"))
+                .to("https://prdct-transact-env0-test-3scale-apicast-staging.apps.os-nonprod.domcoin.net/CreateLoan?httpMethod=POST")
                 .log("Respuesta de la api: ${body}");
                 } catch(Exception e) {
                     System.err.println("Error al configurar la ruta: " + e.getMessage());
