@@ -71,7 +71,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                     .otherwise()
                         .log(LoggingLevel.ERROR, "Error HTTP ${header.CamelHttpResponseCode}: ${body}")
                 .end()
-                .log("Respuesta de la api: ${body}");
+                .log("Respuesta de la api: ${body}")
                 .process(exchange -> {
                     // Obtener la respuesta de la API
                     String apiResponse = exchange.getIn().getBody(String.class);
