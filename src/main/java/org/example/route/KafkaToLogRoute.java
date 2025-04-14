@@ -44,8 +44,16 @@ public class KafkaToLogRoute extends RouteBuilder {
             from("kafka:my-topic10?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
                 .routeId("kafka-jslt-log")
                 .process(exchange -> {
-                    String rawBody = exchange.getMessage().getBody(String.class);
+                    // Obtener correlationId del mensaje original
+                    String rawBody = exchange.getIn().getBody(String.class);
+                    JsonNode jsonNode = new ObjectMapper().readTree(rawBody);
+                    String correlationId = jsonNode.path("metadata").path("correlationId").asText();
+                    
+                    // Guardar el correlationId en el mensaje
                     System.out.println("Mensaje original desde Kafka (procesador): " + rawBody);
+                    System.out.println("Correlativo: " + correlationId);
+
+                    exchange.setProperty("correlationId", correlationId);
                 })
 
                 .to("jslt:classpath:transformationInput.jslt")
