@@ -1,5 +1,10 @@
 package org;
 
+import javax.net.ssl.X509TrustManager;
+import java.security.cert.X509Certificate;
+import org.apache.camel.support.jsse.SSLContextParameters;
+import org.apache.camel.support.jsse.TrustManagersParameters;
+
 @Bean("sslContextParameters")
 public SSLContextParameters createSslContextParameters() {
     SSLContextParameters sslContextParameters = new SSLContextParameters();
