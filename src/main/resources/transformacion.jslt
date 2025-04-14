@@ -17,6 +17,7 @@
       "currencyId": .body.currencyId,
       "activityId": .body.activityId,
       "effectiveDate": .body.effectiveDate,
+      "customerIds": .body.customerIds,
 
       "properties": [
         {
