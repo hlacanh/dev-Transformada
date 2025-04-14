@@ -18,12 +18,10 @@ public class KafkaToLogRoute extends RouteBuilder {
         try {
             from("kafka:my-topic10?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
                 .routeId("kafka-jslt-log")
-                // Opción 1: Mostrar mensaje original usando procesador
                 .process(exchange -> {
                     String rawBody = exchange.getMessage().getBody(String.class);
                     System.out.println("Mensaje original desde Kafka (procesador): " + rawBody);
                 })
-                // Aquí usamos el procesador JsltProcessor en lugar de to()
                 .to("jslt:classpath:transformacion.jslt")
                 .log("JSON de entrada: ${body}")
                 .setHeader("Content-Type", constant("application/vnd.kafka.json.v2+json"))
@@ -32,7 +30,6 @@ public class KafkaToLogRoute extends RouteBuilder {
                 .to("https://prdct-transact-env0-test-3scale-apicast-staging.apps.os-nonprod.domain.net/CreateLoan?httpMethod=POST")
     
                 .log("Respuesta de la api: ${body}")
-                .log("Mensaje transformado: ${body}");
                 } catch(Exception e) {
                     System.err.println("Error al configurar la ruta: " + e.getMessage());
                     e.printStackTrace();
