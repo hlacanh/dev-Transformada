@@ -418,7 +418,7 @@
               "fieldValue": .body.properties[10].SCHEDULE."PERCENTAGE:1:1"
             },
             {
-              "fieldName": "START.DATE:1:11",
+              "fieldName": "START.DATE:1:1",
               "fieldValue": .body.properties[10].SCHEDULE."START.DATE:1:1"
             },
             {

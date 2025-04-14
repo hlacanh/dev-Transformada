@@ -47,8 +47,8 @@ public class KafkaToLogRoute extends RouteBuilder {
                     String rawBody = exchange.getMessage().getBody(String.class);
                     System.out.println("Mensaje original desde Kafka (procesador): " + rawBody);
                 })
-                
-                .to("jslt:classpath:transformacion.jslt")
+
+                .to("jslt:classpath:transformationInput.jslt")
                 .log("JSON de entrada: ${body}")
                 .setHeader("Content-Type", constant("application/vnd.kafka.json.v2+json"))
                 .setHeader("Accept", constant("application/json"))
