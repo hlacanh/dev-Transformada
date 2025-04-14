@@ -49,7 +49,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                     // Obtener correlationId del mensaje original
                     String rawBody = exchange.getIn().getBody(String.class);
                     JsonNode jsonNode = new ObjectMapper().readTree(rawBody);
-                    String correlationId = jsonNode.path("metadata").path("correlationId").asText();
+                    String correlationId = "abc-123-xyz";//jsonNode.path("metadata").path("correlationId").asText();
                     
                     // Guardar el correlationId en el mensaje
                     System.out.println("Mensaje original desde Kafka (procesador): " + rawBody);
@@ -72,6 +72,22 @@ public class KafkaToLogRoute extends RouteBuilder {
                         .log(LoggingLevel.ERROR, "Error HTTP ${header.CamelHttpResponseCode}: ${body}")
                 .end()
                 .log("Respuesta de la api: ${body}");
+                .process(exchange -> {
+                    // Obtener la respuesta de la API
+                    String apiResponse = exchange.getIn().getBody(String.class);
+                    String correlationId = "abc-123-xyz";//exchange.getProperty("correlationId", String.class);
+                    
+                    // Crear el mensaje de respuesta con el correlationId original
+                    JsonNode responseBody = new ObjectMapper().readTree(apiResponse);
+                    ObjectNode fullResponse = new ObjectMapper().createObjectNode();
+                    fullResponse.put("correlationId", correlationId);
+                    fullResponse.set("response", responseBody);
+                    
+                    // Establecer el mensaje de respuesta
+                    exchange.getIn().setBody(fullResponse.toString());
+                })
+                // Enviar al topic de respuestas
+                .to("kafka:my-topic10-responses?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092");
             } catch(Exception e) {
                     System.err.println("Error al configurar la ruta: " + e.getMessage());
                     e.printStackTrace();
