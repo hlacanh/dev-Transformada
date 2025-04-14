@@ -12,8 +12,28 @@ import java.security.cert.X509Certificate;
 import org.apache.camel.support.jsse.SSLContextParameters;
 import org.apache.camel.support.jsse.TrustManagersParameters;
 
+
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Named;
+
 @ApplicationScoped
 public class KafkaToLogRoute extends RouteBuilder {
+
+    @Produces
+    @Named("sslContextParameters")
+    public SSLContextParameters createSslContextParameters() {
+        SSLContextParameters sslContextParameters = new SSLContextParameters();
+        
+        TrustManagersParameters trustManagersParameters = new TrustManagersParameters();
+        trustManagersParameters.setTrustManager(new X509TrustManager() {
+            public void checkClientTrusted(X509Certificate[] chain, String authType) {}
+            public void checkServerTrusted(X509Certificate[] chain, String authType) {}
+            public X509Certificate[] getAcceptedIssuers() { return new X509Certificate[0]; }
+        });
+        sslContextParameters.setTrustManagers(trustManagersParameters);
+        
+        return sslContextParameters;
+    }
 
     @Override
     public void configure() {
