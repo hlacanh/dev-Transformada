@@ -87,7 +87,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                     exchange.getIn().setBody(fullResponse.toString());
                 })
                 // Enviar al topic de respuestas
-                .to("kafka:my-topic10-responses?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092");
+                .to("kafka:my-topic10-response?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092");
             } catch(Exception e) {
                     System.err.println("Error al configurar la ruta: " + e.getMessage());
                     e.printStackTrace();
