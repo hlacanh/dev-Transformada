@@ -52,9 +52,16 @@ public class KafkaToLogRoute extends RouteBuilder {
                 .setHeader("Content-Type", constant("application/vnd.kafka.json.v2+json"))
                 .setHeader("Accept", constant("application/json"))
                 .setHeader("user_key", constant("c42e2d875cc2712506851a7cc228c133"))
-                .to("https://prdct-transact-env0-test-3scale-apicast-staging.apps.os-nonprod.domcoin.net/CreateLoan?httpMethod=POST&sslContextParameters=#sslContextParameters")
+                .to("https://prdct-transact-env0-test-3scale-apicast-staging.apps.os-nonprod.domcoin.net/CreateLoan?httpMethod=POST&sslContextParameters=#sslContextParameters&throwExceptionOnFailure=false")
+                .log("Código de respuesta: ${header.CamelHttpResponseCode}")
+                .choice()
+                    .when(header("CamelHttpResponseCode").isLessThan(400))
+                        .log("Respuesta exitosa de la API: ${body}")
+                    .otherwise()
+                        .log(LoggingLevel.ERROR, "Error HTTP ${header.CamelHttpResponseCode}: ${body}")
+                .end()
                 .log("Respuesta de la api: ${body}");
-                } catch(Exception e) {
+            } catch(Exception e) {
                     System.err.println("Error al configurar la ruta: " + e.getMessage());
                     e.printStackTrace();
                 }
