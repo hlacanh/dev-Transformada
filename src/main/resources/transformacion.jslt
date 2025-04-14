@@ -1,8 +1,3 @@
-
-{
-        "records": [
-          {
-            "value": 
 {
     "body": {
 
@@ -246,7 +241,7 @@
               "fieldValue": .body.properties[0].ACCOUNT."CONSTRUCTOR"
             },
             {
-              "fieldName": "PROYECTO",
+              "fieldName": "L.PROYECTO",
               "fieldValue": .body.properties[0].ACCOUNT."PROYECTO"
             },
             {
@@ -506,7 +501,4 @@
         }
       ]
     }
-  }}
-
-        ]
-      }
+  }
