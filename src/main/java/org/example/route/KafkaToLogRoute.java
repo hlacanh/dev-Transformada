@@ -29,7 +29,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                 .setHeader("user_key", constant("bdc96a4bd17bbe1f7c1960b0912e68a0"))
                 .to("https://prdct-transact-env0-test-3scale-apicast-staging.apps.os-nonprod.domain.net/CreateLoan?httpMethod=POST")
     
-                .log("Respuesta de la api: ${body}")
+                .log("Respuesta de la api: ${body}");
                 } catch(Exception e) {
                     System.err.println("Error al configurar la ruta: " + e.getMessage());
                     e.printStackTrace();
