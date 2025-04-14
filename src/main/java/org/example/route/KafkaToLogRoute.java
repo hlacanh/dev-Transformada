@@ -7,6 +7,11 @@ import org.apache.camel.model.dataformat.JsonDataFormat;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.net.ssl.X509TrustManager;
+import java.security.cert.X509Certificate;
+import org.apache.camel.support.jsse.SSLContextParameters;
+import org.apache.camel.support.jsse.TrustManagersParameters;
+
 @ApplicationScoped
 public class KafkaToLogRoute extends RouteBuilder {
 
@@ -27,7 +32,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                 .setHeader("Content-Type", constant("application/vnd.kafka.json.v2+json"))
                 .setHeader("Accept", constant("application/json"))
                 .setHeader("user_key", constant("c42e2d875cc2712506851a7cc228c133"))
-                .to("https://api-gtc-env0-core-t24.apps.os-nonprod.domcoin.net/ONB-002_loanCreate-provider-container/api/v1.0.0/holdings/loans?httpMethod=POST")
+                .to("https://prdct-transact-env0-test-3scale-apicast-staging.apps.os-nonprod.domcoin.net/CreateLoan?httpMethod=POST&sslContextParameters=#sslContextParameters")
                 .log("Respuesta de la api: ${body}");
                 } catch(Exception e) {
                     System.err.println("Error al configurar la ruta: " + e.getMessage());
