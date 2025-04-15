@@ -77,6 +77,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                     String apiResponse = exchange.getIn().getBody(String.class);
                     String correlationId = "abc-123-xyz";//exchange.getProperty("correlationId", String.class);
                     
+                              // Crear el mensaje de respuesta con el correlationId original
                     // Crear el mensaje de respuesta con el correlationId original
                     JsonNode responseBody = new ObjectMapper().readTree(apiResponse);
                     ObjectNode fullResponse = new ObjectMapper().createObjectNode();
@@ -85,52 +86,42 @@ public class KafkaToLogRoute extends RouteBuilder {
                     
                     // Establecer el mensaje de respuesta
                     exchange.getIn().setBody(fullResponse.toString());
+                    
+                    // Crear una copia de la respuesta para enviarla a Kafka
+                    exchange.setProperty("finalResponse", fullResponse.toString());
                 })
-                // Enviar al topic de respuestas
-                .to("kafka:my-topic10-response?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092");
-
-                // CONSUMIDOR - Nueva ruta para consumir mensajes del topic de respuestas
-                from("kafka:my-topic10-response?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092" +
-                "&groupId=response-consumer-group" +
-                "&autoOffsetReset=earliest")
-                .routeId("kafka-response-consumer")
-                .log("Consumiendo mensaje del topic de respuestas: ${body}")
+                // Usar wireTap para enviar una copia del mensaje al topic de respuestas
+                // mientras se continúa con el flujo principal
+                .wireTap("direct:sendToKafka");
+                
+            // Ruta para enviar a Kafka    
+            from("direct:sendToKafka")
                 .process(exchange -> {
-                    try {
-                        // Obtener el mensaje
-                        String responseMessage = exchange.getIn().getBody(String.class);
-                        
-                        // Parsear el JSON
-                        ObjectMapper objectMapper = new ObjectMapper();
-                        JsonNode responseJson = objectMapper.readTree(responseMessage);
-                        
-                        // Extraer correlationId y respuesta
-                        String correlationId = "abc-123-xyz";
-                                                
-                        System.out.println("=============================================");
-                        System.out.println("Mensaje consumido del topic de respuestas:");
-                        System.out.println("CorrelationId: " + correlationId);
-                        
-                        // Procesar la respuesta
-                        if (responseJson.has("response")) {
-                            JsonNode response = responseJson.get("response");
-                            System.out.println("Contenido de la respuesta: " + response);
-                            
-                            // Aquí implementa tu lógica de procesamiento específica
-                            //procesarRespuesta(correlationId, response);
-                        } else {
-                            System.out.println("El mensaje no contiene el campo 'response'");
-                        }
-                    } catch (Exception e) {
-                        System.err.println("Error al procesar mensaje de respuesta: " + e.getMessage());
-                        e.printStackTrace();
-                    }
+                    // Obtener la respuesta final desde la propiedad
+                    String finalResponse = exchange.getProperty("finalResponse", String.class);
+                    // Establecerla como el cuerpo del mensaje para enviar a Kafka
+                    exchange.getIn().setBody(finalResponse);
                 })
-                .log("Procesamiento de respuesta completado");
-
-            } catch(Exception e) {
-                    System.err.println("Error al configurar la ruta: " + e.getMessage());
-                    e.printStackTrace();
-                }
+                .log("Enviando mensaje al topic de respuestas: ${body}")
+                .to("kafka:my-topic10-response?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092");
+                
+            // Segunda ruta para consumir del topic de respuestas
+            from("kafka:my-topic10-response?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092" +
+                 "&groupId=response-consumer-group" +
+                 "&autoOffsetReset=earliest")
+                .routeId("kafka-response-consumer")
+                .log("Consumiendo mensaje del topic de respuestas")
+                .process(exchange -> {
+                    // Mostrar el mensaje recibido
+                    String responseMessage = exchange.getIn().getBody(String.class);
+                    System.out.println("=============================================");
+                    System.out.println("RESPUESTA RECIBIDA DEL TOPIC:");
+                    System.out.println(responseMessage);
+                    System.out.println("=============================================");
+                });
+        } catch(Exception e) {
+            System.err.println("Error al configurar la ruta: " + e.getMessage());
+            e.printStackTrace();
         }
     }
+}
