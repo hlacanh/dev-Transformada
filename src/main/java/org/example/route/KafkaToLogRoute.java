@@ -11,12 +11,10 @@ import javax.net.ssl.X509TrustManager;
 import java.security.cert.X509Certificate;
 import org.apache.camel.support.jsse.SSLContextParameters;
 import org.apache.camel.support.jsse.TrustManagersParameters;
+
+
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @ApplicationScoped
 public class KafkaToLogRoute extends RouteBuilder {
@@ -46,16 +44,8 @@ public class KafkaToLogRoute extends RouteBuilder {
             from("kafka:my-topic10?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
                 .routeId("kafka-jslt-log")
                 .process(exchange -> {
-                    // Obtener correlationId del mensaje original
-                    String rawBody = exchange.getIn().getBody(String.class);
-                    JsonNode jsonNode = new ObjectMapper().readTree(rawBody);
-                    String correlationId = jsonNode.path("metadata").path("correlationId").asText();
-                    
-                    // Guardar el correlationId en el mensaje
+                    String rawBody = exchange.getMessage().getBody(String.class);
                     System.out.println("Mensaje original desde Kafka (procesador): " + rawBody);
-                    System.out.println("Correlativo: " + correlationId);
-
-                    exchange.setProperty("correlationId", correlationId);
                 })
 
                 .to("jslt:classpath:transformationInput.jslt")
@@ -71,11 +61,14 @@ public class KafkaToLogRoute extends RouteBuilder {
                     .otherwise()
                         .log(LoggingLevel.ERROR, "Error HTTP ${header.CamelHttpResponseCode}: ${body}")
                 .end()
-                .log("Respuesta de la api: ${body}")
-                .to("kafka:my-topic10-response?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092");
+                .log("Respuesta de la api: ${body}");
             } catch(Exception e) {
                     System.err.println("Error al configurar la ruta: " + e.getMessage());
                     e.printStackTrace();
                 }
         }
     }
+
+
+
+    
