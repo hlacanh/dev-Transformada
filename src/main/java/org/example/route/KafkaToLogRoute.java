@@ -88,47 +88,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                 })
                 // Enviar al topic de respuestas
                 .to("kafka:my-topic10-response?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092");
-
-       // CONSUMIDOR - Nueva ruta para consumir mensajes del topic de respuestas
-            from("kafka:my-topic10-response?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092" +
-                 "&groupId=response-consumer-group" +
-                 "&autoOffsetReset=earliest")
-                .routeId("kafka-response-consumer")
-                .log("Consumiendo mensaje del topic de respuestas: ${body}")
-                .process(exchange -> {
-                    try {
-                        // Obtener el mensaje
-                        String responseMessage = exchange.getIn().getBody(String.class);
-                        
-                        // Parsear el JSON
-                        ObjectMapper objectMapper = new ObjectMapper();
-                        JsonNode responseJson = objectMapper.readTree(responseMessage);
-                        
-                        // Extraer correlationId y respuesta
-                        String correlationId = responseJson.has("correlationId") ? 
-                                              responseJson.get("correlationId").asText() : "No correlationId";
-                                              
-                        System.out.println("=============================================");
-                        System.out.println("Mensaje consumido del topic de respuestas:");
-                        System.out.println("CorrelationId: " + correlationId);
-                        
-                        // Procesar la respuesta
-                        if (responseJson.has("response")) {
-                            JsonNode response = responseJson.get("response");
-                            System.out.println("Contenido de la respuesta: " + response);
-                            
-                            // Aquí implementa tu lógica de procesamiento específica
-                            procesarRespuesta(correlationId, response);
-                        } else {
-                            System.out.println("El mensaje no contiene el campo 'response'");
-                        }
-                    } catch (Exception e) {
-                        System.err.println("Error al procesar mensaje de respuesta: " + e.getMessage());
-                        e.printStackTrace();
-                    }
-                })
-                .log("Procesamiento de respuesta completado");
-
+                
             } catch(Exception e) {
                     System.err.println("Error al configurar la ruta: " + e.getMessage());
                     e.printStackTrace();
