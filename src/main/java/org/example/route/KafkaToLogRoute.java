@@ -55,11 +55,11 @@ public class KafkaToLogRoute extends RouteBuilder {
                 .setHeader("user_key", constant("c42e2d875cc2712506851a7cc228c133"))
                 .to("https://prdct-transact-env0-test-3scale-apicast-staging.apps.os-nonprod.domcoin.net/CreateLoan?httpMethod=POST&sslContextParameters=#sslContextParameters&throwExceptionOnFailure=false")
 
-                .to("https://kafka-brigde-mytopic10.apps.os-nonprod.domcoin.net:443/topic10/consumers/transact-group/instances/transact-consumer/records")
-                .setHeader("Content-Type", constant("application/vnd.kafka.json.v2+json"))
-                .setHeader("Accept", constant("application/json"))
-                .setHeader("user_key", constant("bdc96a4bd17bbe1f7c1960b0912e68a0"))
-                .setHeader(Exchange.HTTP_method, constant("GET"))
+                //.to("https://kafka-brigde-mytopic10.apps.os-nonprod.domcoin.net:443/topic10/consumers/transact-group/instances/transact-consumer/records")
+                //.setHeader("Content-Type", constant("application/vnd.kafka.json.v2+json"))
+                //.setHeader("Accept", constant("application/json"))
+                //.setHeader("user_key", constant("bdc96a4bd17bbe1f7c1960b0912e68a0"))
+                //.setHeader(Exchange.HTTP_method, constant("GET"))
 
                 .log("Código de respuesta: ${header.CamelHttpResponseCode}")
                 .choice()
