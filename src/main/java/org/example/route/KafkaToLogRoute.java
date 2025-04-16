@@ -68,9 +68,7 @@ public class KafkaToLogRoute extends RouteBuilder {
                     .otherwise()
                         .log(LoggingLevel.ERROR, "Error HTTP ${header.CamelHttpResponseCode}: ${body}")
                 .end()
-                .to("kafka:my-topic10-response?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
                 .log("Respuesta de la api: ${body}");
-
 
             } catch(Exception e) {
                     System.err.println("Error al configurar la ruta: " + e.getMessage());
